@@ -43,5 +43,5 @@ services:
       DB_PORT: 5432
     command:
       - '--name'
-      - 'subql-starter' #Same as your project name
+      - 'nftmart-query' #Same as your project name
       - '--playground'
