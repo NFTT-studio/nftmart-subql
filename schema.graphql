@@ -223,6 +223,18 @@ type NftUser @entity {
   deleted_at: Date
 }
 
+input NftUserInput {
+  description: String
+  nickname: String
+  address: String
+}
+
+type Mutation {
+  createUser(input: NftUserInput): NftUser
+  updateUser(id: ID!, input: NftUserInput): NftUser
+}
+
+
 type NftClass @entity {
   id: ID!
   name: String
