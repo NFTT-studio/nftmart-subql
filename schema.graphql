@@ -222,3 +222,20 @@ type NftUser @entity {
   updated_at: Date
   deleted_at: Date
 }
+
+type NftClass @entity {
+  id: ID!
+  name: String
+  logo: String
+  feature: String
+  description: String
+  address: String
+  metadata: String!
+  authentication: Int
+  royalty: Int
+  owner: String
+  admins: String
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
+}
