@@ -252,7 +252,7 @@ type NftClass @entity {
   deleted_at: Date
 }
 
-type nftCategory @entity {
+type nftCategories @entity {
   id: ID!
   name: String
   created_at: Date
@@ -275,7 +275,7 @@ type nftNft @entity {
   class_id: Int
   file_type: Int
   cid: String
-  metadata: String
+  metadata: Metadata
   authentication: Int
   royalty: Int
   address: String
@@ -285,4 +285,12 @@ type nftNft @entity {
   created_at: Date
   updated_at: Date
   deleted_at: Date
+}
+
+
+type Metadata @jsonField {
+  description: String!
+  externalUrl: String!
+  name: String!
+  url: String!
 }
