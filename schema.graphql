@@ -251,3 +251,38 @@ type NftClass @entity {
   updated_at: Date
   deleted_at: Date
 }
+
+type nftCategory @entity {
+  id: ID!
+  name: String
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
+}
+
+type nftClassCategory @entity {
+  id: ID!
+  class_id: Int
+  category_id: Int
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
+}
+
+type nftNft @entity {
+  id: ID!
+  token_id: String
+  class_id: Int
+  file_type: Int
+  cid: String
+  metadata: String
+  authentication: Int
+  royalty: Int
+  address: String
+  creater: String
+  status: String
+  category_id: Int
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
+}
