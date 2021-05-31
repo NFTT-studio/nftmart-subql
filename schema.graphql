@@ -222,8 +222,6 @@ type NftUser @entity {
 
   classes: [NftClass] @derivedFrom(field: "user")
   nfts: [NftNft] @derivedFrom(field: "user")
-  trades: [NftTradeRecord] @derivedFrom(field: "buyer")
-  trades: [NftTradeRecord] @derivedFrom(field: "seller")
 }
 
 
@@ -274,6 +272,7 @@ type NftNft @entity {
 type NftTradeRecord @entity {
   id: ID!
   nft_id: String
+  nft: NftNft # create relation to nft_nft
   type: Int
   block_height: String
   block_hash: String
@@ -284,6 +283,74 @@ type NftTradeRecord @entity {
   direction: Int
   status: Int
   trade_id: String
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
+}
+
+type NfRebateRecord @entity {
+  id: ID!
+  trade: NftTradeRecord  # create relation to nft_trade_record
+  user: NftUser # create relation to nft_user
+  nft: NftNft # create relation to nft_nft
+  token: String
+  fee: String
+  rate: String
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
+}
+
+type NfBenefitRecord @entity {
+  id: ID!
+  trade: NftTradeRecord  # create relation to nft_trade_record
+  user: NftUser # create relation to nft_user
+  nft: NftNft # create relation to nft_nft
+  token: String
+  fee: String
+  rate: String
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
+}
+
+type NfTradeTaxRecord @entity {
+  id: ID!
+  trade: NftTradeRecord  # create relation to nft_trade_record
+  nft: NftNft # create relation to nft_nft
+  token: String
+  fee: String
+  rate: String
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
+}
+
+
+type NfCollectRecord @entity {
+  id: ID!
+  user: NftUser # create relation to nft_user
+  nft: NftNft # create relation to nft_nft
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
+}
+
+type NfTokenRecord @entity {
+  id: ID!
+  user: NftUser # create relation to nft_user
+  token: String
+  amount: String
+  type: Int
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
+}
+
+type NfBrowseRecord @entity {
+  id: ID!
+  nft: NftNft # create relation to nft_nft
+  token: String
   created_at: Date
   updated_at: Date
   deleted_at: Date

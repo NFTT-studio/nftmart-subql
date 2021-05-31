@@ -38,3 +38,17 @@ export {NftCategory} from "./NftCategory"
 
 export {NftNft} from "./NftNft"
 
+export {NftTradeRecord} from "./NftTradeRecord"
+
+export {NfRebateRecord} from "./NfRebateRecord"
+
+export {NfBenefitRecord} from "./NfBenefitRecord"
+
+export {NfTradeTaxRecord} from "./NfTradeTaxRecord"
+
+export {NfCollectRecord} from "./NfCollectRecord"
+
+export {NfTokenRecord} from "./NfTokenRecord"
+
+export {NfBrowseRecord} from "./NfBrowseRecord"
+
