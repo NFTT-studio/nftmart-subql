@@ -34,3 +34,7 @@ export {NftUser} from "./NftUser"
 
 export {NftClass} from "./NftClass"
 
+export {NftCategory} from "./NftCategory"
+
+export {NftNft} from "./NftNft"
+

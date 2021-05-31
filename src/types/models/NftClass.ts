@@ -18,9 +18,11 @@ export class NftClass implements Entity {
 
     public feature?: string;
 
+    public categoryId?: string;
+
     public description?: string;
 
-    public address?: string;
+    public userId?: string;
 
     public metadata: string;
 

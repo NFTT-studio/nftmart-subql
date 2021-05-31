@@ -206,7 +206,6 @@ type TakeOrder @entity {
   debug: String
 }
 
-
 type NftUser @entity {
   id: ID!
   description: String
@@ -214,24 +213,17 @@ type NftUser @entity {
   nickname: String
   media: String
   feature: String
-  address: String!
   last_login_time: Date
   last_login_ip: String
   login_times: Int
   created_at: Date
   updated_at: Date
   deleted_at: Date
-}
 
-input NftUserInput {
-  description: String
-  nickname: String
-  address: String
-}
-
-type Mutation {
-  createUser(input: NftUserInput): NftUser
-  updateUser(id: ID!, input: NftUserInput): NftUser
+  classes: [NftClass] @derivedFrom(field: "user")
+  nfts: [NftNft] @derivedFrom(field: "user")
+  trades: [NftTradeRecord] @derivedFrom(field: "buyer")
+  trades: [NftTradeRecord] @derivedFrom(field: "seller")
 }
 
 
@@ -240,8 +232,9 @@ type NftClass @entity {
   name: String
   logo: String
   feature: String
+  category: NftCategory #create relation to nft_category
   description: String
-  address: String
+  user: NftUser # create relation to nft_user
   metadata: String!
   authentication: Int
   royalty: Int
@@ -252,7 +245,7 @@ type NftClass @entity {
   deleted_at: Date
 }
 
-type nftCategories @entity {
+type NftCategory @entity {
   id: ID!
   name: String
   created_at: Date
@@ -260,25 +253,16 @@ type nftCategories @entity {
   deleted_at: Date
 }
 
-type nftClassCategory @entity {
-  id: ID!
-  class_id: Int
-  category_id: Int
-  created_at: Date
-  updated_at: Date
-  deleted_at: Date
-}
-
-type nftNft @entity {
+type NftNft @entity {
   id: ID!
   token_id: String
-  class_id: Int
+  class: NftClass #create relation to nft_class
   file_type: Int
   cid: String
   metadata: Metadata
   authentication: Int
   royalty: Int
-  address: String
+  user: NftUser # create relation to nft_user
   creater: String
   status: String
   category_id: Int
@@ -287,6 +271,23 @@ type nftNft @entity {
   deleted_at: Date
 }
 
+type NftTradeRecord @entity {
+  id: ID!
+  nft_id: String
+  type: Int
+  block_height: String
+  block_hash: String
+  token: String
+  price: String
+  buyer: NftUser # create relation to nft_user
+  seller: NftUser # create relation to nft_user
+  direction: Int
+  status: Int
+  trade_id: String
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date
+}
 
 type Metadata @jsonField {
   description: String!
@@ -294,3 +295,4 @@ type Metadata @jsonField {
   name: String!
   url: String!
 }
+

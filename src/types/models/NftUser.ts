@@ -22,8 +22,6 @@ export class NftUser implements Entity {
 
     public feature?: string;
 
-    public address: string;
-
     public last_login_time?: Date;
 
     public last_login_ip?: string;
