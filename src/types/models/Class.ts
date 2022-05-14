@@ -1,5 +1,5 @@
 // Auto-generated , DO NOT EDIT
-import {Entity, FunctionPropertyNames, store} from "@subql/types";
+import {Entity, FunctionPropertyNames} from "@subql/types";
 import assert from 'assert';
 
 import {

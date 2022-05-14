@@ -1,4 +1,4 @@
-import {SubstrateExtrinsic, SubstrateEvent, api} from '@subql/types';
+import {SubstrateExtrinsic, SubstrateEvent} from '@subql/types';
 import {Call} from '../../types/models/Call';
 import {Order} from '../../types/models/Order';
 import {OrderItem} from '../../types/models/OrderItem';

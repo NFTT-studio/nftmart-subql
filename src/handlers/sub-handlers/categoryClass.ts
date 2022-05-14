@@ -9,7 +9,6 @@ import {DispatchedCallData} from '../types';
 import {AccountHandler} from './account';
 import {hexToAscii} from '../../helpers/common';
 import {ClassHandler} from './class';
-import {api, logger} from '@subql/types';
 import {BadData} from '../../types/models/BadData';
 
 export class CategoryClassHandler {

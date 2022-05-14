@@ -8,7 +8,6 @@ import {DispatchedCallData} from '../types';
 import {AccountHandler} from './account';
 import {hexToAscii} from '../../helpers/common';
 import {getBlockTimestamp} from '../../helpers';
-import {api, logger} from '@subql/types';
 
 export class CategoryHandler {
   static async ensureCategory(id: string) {

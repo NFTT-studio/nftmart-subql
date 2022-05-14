@@ -1,120 +1,30 @@
-specVersion: 0.0.1
-description: 'nftmart (https://github.com/nftt-studio/nftmart-node) subquery project'
-repository: 'https://github.com/subqns/nftmart-subql.git'
-schema: ./schema.graphql
+specVersion: 1.0.0
+name: 'repo'
+version: 1.0.0
+runner:
+  node:
+    name: '@subql/node'
+    version: ^1.0.0
+  query:
+    name: '@subql/query'
+    version: ^1.0.0
+description: >-
+  NFTMart: A professional NFT market
+repository: 'https://github.com/NFTT-studio/nftmart-subql'
+schema:
+  file: ./schema.graphql
 network:
-  # endpoint: wss://mandala6.laminar.codes
-  # endpoint: "ws://8.136.111.191:9944"
-  # endpoint: ws://81.70.132.13:9944
-  # endpoint: ws://81.70.132.13:9966
-  # endpoint: ws://tmp-chain.bcdata.top
-  # endpoint: wss://staging-ws.nftmart.io
-  endpoint: wss://staging.nftmart.io/rpc/ws
-  # endpoint: ws://127.0.0.1:9944
-  # endpoint: ws://43.129.72.231:9999
-  types:
-    Properties: u8
-    NFTMetadata: Vec<u8>
-    BlockNumber: u32
-    BlockNumberOf: BlockNumber
-    BlockNumberFor: BlockNumber
-    GlobalId: u64
-    CurrencyId: u32
-    CurrencyIdOf: CurrencyId
-    Amount: i128
-    AmountOf: Amount
-    CategoryId: GlobalId
-    CategoryIdOf: CategoryId
-    ClassId: u32
-    ClassIdOf: ClassId
-    TokenId: u64
-    TokenIdOf: TokenId
-    OrmlAccountData:
-      free: Balance
-      reserved: Balance
-      frozen: Balance
-    OrmlBalanceLock:
-      amount: Balance
-      id: LockIdentifier
-    ClassInfoOf:
-      metadata: NFTMetadata
-      totalIssuance: Compact<TokenId>
-      owner: AccountId
-      data: ClassData
-    ClassData:
-      deposit: Compact<Balance>
-      properties: Properties
-      name: Vec<u8>
-      description: Vec<u8>
-      createBlock: Compact<BlockNumberOf>
-      royaltyRate: Compact<PerU16>
-      categoryIds: Vec<CategoryId>
-    TokenInfoOf:
-      metadata: NFTMetadata
-      data: TokenData
-      quantity: Compact<TokenId>
-    TokenData:
-      deposit: Compact<Balance>
-      createBlock: Compact<BlockNumberOf>
-      royalty_rate: Compact<PerU16>
-      creator: AccountId
-      royaltyBeneficiary: AccountId
-    AccountToken:
-      quantity: Compact<TokenId>
-      reserved: Compact<TokenId>
-    CategoryData:
-      metadata: NFTMetadata
-      nftCount: Compact<Balance>
-    OrderItem:
-      classId: Compact<ClassId>
-      tokenId: Compact<TokenId>
-      quantity: Compact<TokenId>
-    OrderOf:
-      currencyId: Compact<CurrencyId>
-      deposit: Compact<Balance>
-      price: Compact<Balance>
-      deadline: Compact<BlockNumberOf>
-      items: Vec<OrderItem>
-      commissionRate: Compact<PerU16>
-    OfferOf:
-      currencyId: Compact<CurrencyId>
-      price: Compact<Balance>
-      deadline: Compact<BlockNumberOf>
-      items: Vec<OrderItem>
-      commissionRate: Compact<PerU16>
-    BritishAuctionOf:
-      currencyId: Compact<CurrencyId>
-      hammerPrice: Compact<Balance>
-      minRaise: Compact<PerU16>
-      deposit: Compact<Balance>
-      initPrice: Compact<Balance>
-      deadline: Compact<BlockNumberOf>
-      allowDelay: bool
-      items: Vec<OrderItem>
-      commissionRate: Compact<PerU16>
-    BritishAuctionBidOf:
-      lastBidPrice: Compact<Balance>
-      lastBidAccount: Option<AccountId>
-      lastBidBlock: Compact<BlockNumberOf>
-      commissionAgent: Option<AccountId>
-      commissionData: Option<Vec<u8>>
-    DutchAuctionOf:
-      currencyId: Compact<CurrencyId>
-      deposit: Compact<Balance>
-      minPrice: Compact<Balance>
-      maxPrice: Compact<Balance>
-      deadline: Compact<BlockNumberOf>
-      createdBlock: Compact<BlockNumberOf>
-      items: Vec<OrderItem>
-      allowBritishAuction: bool
-      minRaise: Compact<PerU16>
-      commissionRate: Compact<PerU16>
-    DutchAuctionBidOf: BritishAuctionBidOf
+  chainId: '0xfcf9074303d8f319ad1bf0195b145871977e7c375883b834247cb01ff22f51f9'
+  endpoint: 'wss://mainnet.nftmart.io/rpc/ws'
+# dictionary: 'https://api.subquery.network/sq/subquery/dictionary-polkadot'
+# genesisHash: '0xfcf9074303d8f319ad1bf0195b145871977e7c375883b834247cb01ff22f51f9'
+  chaintypes:
+    file: ./chaintypes.yaml
 dataSources:
-  - name: main
-    kind: substrate/Runtime
-    startBlock: 1 # nothing interesting to see before this
+  - kind: substrate/Runtime
+    startBlock: 443322
     mapping:
+      file: ./dist/index.js
       handlers:
         - handler: handleBlock
           kind: substrate/BlockHandler

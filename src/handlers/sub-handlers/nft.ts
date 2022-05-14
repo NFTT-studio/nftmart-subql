@@ -12,7 +12,6 @@ import {AccountHandler} from './account';
 import {hexToAscii} from '../../helpers/common';
 import {getBlockTimestamp} from '../../helpers';
 import {ClassHandler} from './class';
-import {api, logger} from '@subql/types';
 import {BadData} from '../../types/models/BadData';
 
 export class NftHandler {
