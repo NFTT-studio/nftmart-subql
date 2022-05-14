@@ -84,7 +84,7 @@ export class OrderHandler {
 
     await AccountHandler.ensureAccount(who.toString());
 
-    let ord = ((await api.query.nftmartOrder.orders.at(blockHash, who.toString(), orderId)) as any).unwrap();
+    let ord = ((await api.query.nftmartOrder.orders(who.toString(), orderId)) as any).unwrap();
 
     const currencyId = ord.currencyId.toString();
     // const categoryId = ord.categoryId.toString();
@@ -323,7 +323,7 @@ export class OrderHandler {
     const itemsJson = (args[3].toJSON() as number[][])
     */
 
-    let ofr = ((await api.query.nftmartOrder.offers.at(blockHash, who.toString(), orderId)) as any).unwrap();
+    let ofr = ((await api.query.nftmartOrder.offers(who.toString(), orderId)) as any).unwrap();
 
     const currencyId = ofr.currencyId.toString();
     const price = ofr.price.toBigInt();

@@ -53,7 +53,7 @@ export class AuctionHandler {
 
     await AccountHandler.ensureAccount(owner);
 
-    let auc = ((await api.query.nftmartAuction.britishAuctions.at(blockHash, owner, auctionId)) as any).unwrap();
+    let auc = ((await api.query.nftmartAuction.britishAuctions(owner, auctionId)) as any).unwrap();
 
     const deposit = auc.deposit.toBigInt();
     const initPrice = auc.initPrice.toBigInt();
@@ -356,7 +356,7 @@ export class AuctionHandler {
     await AccountHandler.ensureAccount(owner);
     await AuctionHandler.ensureAuction(auctionId);
 
-    let bd = ((await api.query.nftmartAuction.britishAuctionBids.at(blockHash, auctionId)) as any).unwrap();
+    let bd = ((await api.query.nftmartAuction.britishAuctionBids(auctionId)) as any).unwrap();
 
     let ac = await Auction.get(auctionId);
 
@@ -431,7 +431,7 @@ export class AuctionHandler {
     await AccountHandler.ensureAccount(owner);
     await AuctionHandler.ensureAuction(auctionId);
 
-    let auc = ((await api.query.nftmartAuction.dutchAuctions.at(blockHash, owner, auctionId)) as any).unwrap();
+    let auc = ((await api.query.nftmartAuction.dutchAuctions(owner, auctionId)) as any).unwrap();
 
     const deposit = auc.deposit.toBigInt();
     const minPrice = auc.minPrice.toBigInt();
@@ -671,7 +671,7 @@ export class AuctionHandler {
     await AccountHandler.ensureAccount(owner);
     await AuctionHandler.ensureAuction(auctionId);
 
-    let bd = ((await api.query.nftmartAuction.dutchAuctionBids.at(blockHash, auctionId)) as any).unwrap();
+    let bd = ((await api.query.nftmartAuction.dutchAuctionBids(auctionId)) as any).unwrap();
 
     let ac = await Auction.get(auctionId);
 
